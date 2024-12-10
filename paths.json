@@ -1,7 +1,7 @@
 {
   "mappings": [
-    "/content/UE-Demo1/en:/",
-    "/content/UE-Demo1/de:/de",
+    "/content/UE-Demo1/en/:/",
+    "/content/UE-Demo1/de/:/de",
     "/content/UE-Demo1/configuration:/.helix/config.json",
     "/content/UE-Demo1/metadata:/metadata.json"
   ],
