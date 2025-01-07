@@ -104,13 +104,29 @@ function toggleMenu(nav, navSections, forceExpanded = null) {
 }
 
 /**
+* take the navigation from /<country>/<lang>/nav
+*/
+function getLanguageRoot(url) {
+    try {
+        const urlObj = new URL(url);
+        const pathSegments = urlObj.pathname.split('/').filter(segment => segment);
+        const firstTwoLevels = pathSegments.slice(0, 2).join('/');
+        return `/${firstTwoLevels}`;
+    } catch (error) {
+        console.error('Invalid URL:', error);
+        return null;
+    }
+}
+
+/**
  * loads and decorates the header, mainly the nav
  * @param {Element} block The header block element
  */
 export default async function decorate(block) {
   // load nav as fragment
-  const navMeta = getMetadata('nav');
-  const navPath = navMeta ? new URL(navMeta, window.location).pathname : '/nav';
+  //const navMeta = getMetadata('nav');
+  //const navPath = navMeta ? new URL(navMeta, window.location).pathname : '/nav';
+  const navPath = getLanguageRoot(window.location) + "/nav";
   const fragment = await loadFragment(navPath);
 
   // decorate nav DOM
